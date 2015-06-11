@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Lista obrazkow</title>
+</head>
+<body>
+{%  for img in obrazky %}
+    <div>
+        <p><em>{{ img.nazwa }}</em></p>
+        <img src={{ img.source }} height="400" width="400">
+<!--        <p>Źródło do zdjęcia : {{ img.source }} </p>  -->
+        <p>{{ img.licznik  }} <button onclick= "{{ img.glosuj }}"> Wcisnij mnie! </button>  </p>
+
+    </div>
+
+
+{% endfor %}
+
+</body>
+</html>
