@@ -17,8 +17,8 @@ def images_list(request):
         wybrane = request.POST.getlist('kot')
         wszystkie_koty = Obrazek.objects.filter()
         for kotel_id in wybrane:
-            wszystkie_koty[int(kotel_id)-1].glosuj()
-            wszystkie_koty[int(kotel_id)-1].save()
+            wszystkie_koty.filter(id=kotel_id)[0].glosuj()
+            wszystkie_koty.filter(id=kotel_id)[0].save()
     return render_to_response('img_bro/image_list.html',{'obrazky' : obrazki}, context_instance=RequestContext(request) )
 
 
