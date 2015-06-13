@@ -5,20 +5,25 @@
     <title>Lista obrazkow</title>
 </head>
 <body>
-<h1>Oto lista kotow</h1>
-<button onclick="alert('Dodawaj nowe!')" >Dodawaj nowe!</button>
+<h1>Oto lista kotów</h1>
+<FORM METHOD="LINK" ACTION="/add"><INPUT TYPE="submit" VALUE="Dodawanie nowych kotów"></FORM>
+<FORM METHOD="LINK" ACTION="/admin"><INPUT TYPE="submit" VALUE="Panel admina"></FORM>
+<p>Dostepnych jest aż {{ obrazky.count }} kotów!</p>
+<table>
+ <form action="" method="POST">
 
 {%  for img in obrazky %}
-    <div>
-        <p><em>{{ img.nazwa }}</em></p>
-        <img src={{ img.source }} height="400" width="400">
-<!--        <p>Źródło do zdjęcia : {{ img.source }} </p>  -->
-        <p>{{ img.licznik  }} <button onclick= "{{ img.glosuj }}"> Wcisnij mnie! </button>  </p>
+        {% csrf_token %}
+            <tr>
+                <td><p><em>{{ img.nazwa }}</em></p> </td>
+                <td><img src={{ img.source }} height="200" width="200"></td>
+                <td>{{ img.licznik  }}</td>
+                <td><input type = "checkbox" name = "kot" value={{ img.id }}></td>
+                <td><input type = "submit" value="Wyślij glosy!"/></td>
 
-    </div>
-
-
+            </tr>
 {% endfor %}
+ </table>
 
 </body>
 </html>
