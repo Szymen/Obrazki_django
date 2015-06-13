@@ -6,7 +6,7 @@
 </head>
 <body>
 
-<form action="/added-new/" method="POST">
+<form action="/add/" method="POST">
 {% csrf_token %}
   {{ form.as_table }}
 <input type = "submit" value="Submit"/>
